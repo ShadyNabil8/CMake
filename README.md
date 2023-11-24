@@ -87,3 +87,29 @@ configure_file(src/defaultconfig.h.in defaultconfig.h)
 #define APP_VERSION_MAJOR ${APP_VERSION_MAJOR}
 #define APP_VERSION_MINOR ${APP_VERSION_MINOR}
 ```
+## Targets
+Probably the most important item is targets. Targets represent ```executables```, ```libraries```, and ```utilities built by CMake```. Every ```add_library```, ```add_executable```, and ```add_custom_target``` command creates a target. For example, the following command will create a target named “foo” that is a static library, with foo1.c and foo2.c as source files.
+```cmake
+add_library(foo STATIC foo1.c foo2.c)
+```
+## Foreach loop
+```cmake
+# First way
+foreach(I IN ITEMS S H A D Y)
+    message(STATUS ${I})
+endforeach()
+# Second way
+set(mylst N A B I L)
+foreach(I IN LISTS mylst)
+    message(STATUS ${I})
+endforeach()
+```
+
+## While loop
+```cmake
+set(var 10)
+while(var)
+    message(STATUS "var: ${var}")
+    math(EXPR var "${var} - 1")
+endwhile()
+```

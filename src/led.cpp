@@ -1,4 +1,2 @@
 int GetNum()
-{
-    return 17;
-}
+{return 17;}

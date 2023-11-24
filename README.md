@@ -177,3 +177,50 @@ message((${out3}))
 file(GLOB_RECURSE  SRCS "*.cpp")
 message((${SRCS}))
 ```
+## File manipulation(replace)
+```cmake
+file(READ main.cpp out1)
+STRING(REGEX REPLACE "int" "void" result ${out1})
+message((${result}))
+```
+
+## macro VS function
+```cmake
+set(global 5)
+macro(myfun)
+    set(global 9)
+endmacro()
+message(${global}) # 5
+myfun()
+message(${global}) # 9
+```
+All varialbes in function treated as local vars, so ```set(globalf 9)``` thst is inside the function is like define a new var.
+
+```cmake
+set(globalf 5)
+function(myfun)
+    set(globalf 9)
+    # To make it like macro -> set(globalf 9 PARENT_SCOPE)
+endfunction()
+message(${globalf}) # 5
+myfun()
+message(${globalf}) # 5
+```
+
+## Passing a variable
+When you pass a variable, pass it like this to not be confused.
+```cmake
+set(var 9)
+function(fun x)
+    message(${var})    
+    #message(${${x}})
+endfunction()
+
+set(var 9)
+macro(func x)
+    message(${var})    
+    #message(${${x}})
+endmacro()
+fun(${var}) # like this not fun(var)
+func(${var})
+```

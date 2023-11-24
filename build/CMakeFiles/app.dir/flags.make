@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/shady/CMake/include -I/home/shady/CMake/build
+CXX_INCLUDES = -I/home/shady/CMake/include -I/home/shady/CMake/lib -I/home/shady/CMake/build
 
 CXX_FLAGS = -std=gnu++14
 

@@ -3,12 +3,12 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 cmake_minimum_required(VERSION 3.22)
 project(APP VERSION 7.6)
 set(SRC_FILES main.cpp src/led.cpp)
-message("Src files: ${SRC_FILES}")
-if(EXISTS ${CMAKE_SOURCE_DIR}/main.c)
-    message("File is here!!")
-else()
-    message("File is not here!!")
-endif()
+# message("Src files: ${SRC_FILES}")
+# if(EXISTS ${CMAKE_SOURCE_DIR}/main.c)
+#     message("File is here!!")
+# else()
+#     message("File is not here!!")
+# endif()
 
 # Used to build the other CMake file!
 add_subdirectory(${CMAKE_SOURCE_DIR}/lib)
@@ -74,7 +74,7 @@ configure_file(src/defaultconfig.h.in defaultconfig.h)
 # install(FILES "${CMAKE_SOURCE_DIR/include/led.h}" DESTINATION "${PROJECT_BINARY_DIR}/indlude")
 
 # file(READ main.cpp out1)
-#message((${out}))
+#message((${out1}))
 
 # file(STRINGS main.cpp out2)
 # message((${out2}))
@@ -85,3 +85,37 @@ configure_file(src/defaultconfig.h.in defaultconfig.h)
 
 # file(GLOB_RECURSE  SRCS "*.cpp")
 #  message((${SRCS}))
+
+# file(READ main.cpp out1)
+# STRING(REGEX REPLACE  "int" "void" result ${out1})
+# message((${result}))
+
+# set(globalm 5)
+# macro(myfun )
+#     set(globalm 9)
+# endmacro()
+# message(${globalm}) # 5
+# myfun()
+# message(${globalm}) # 9
+
+# set(globalf 5)
+# function(myfun )
+#     set(globalf 9 PARENT_SCOPE)
+# endfunction()
+# message(${globalf}) # 5
+# myfun()
+# message(${globalf}) # 5
+
+set(var 9)
+function(fun x)
+    message(${var})    
+    #message(${${x}})
+endfunction()
+
+set(var 9)
+macro(func x)
+    message(${var})    
+    #message(${${x}})
+endmacro()
+fun(${var})
+func(${var})

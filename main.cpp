@@ -9,5 +9,6 @@ int main(int argc, char const *argv[])
     std::cout << "PRODUVT_YEAR: " << msgfromCMake << std::endl;
     std::cout << "APP_VERSION_MAJOR: " << APP_VERSION_MAJOR << std::endl;
     std::cout << "APP_VERSION_MINOR: " << APP_VERSION_MINOR << std::endl;
+    //std::cout << FOO << std::endl;
     return 0;
 }

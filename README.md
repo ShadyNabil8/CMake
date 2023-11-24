@@ -113,3 +113,67 @@ while(var)
     math(EXPR var "${var} - 1")
 endwhile()
 ```
+
+## Functions
+```cmake
+set(list 0 1 2 3 )
+function(simple arg1 arg2 arg3)
+    message("This is ${arg1} function!")
+    message("${${arg2}}") #0;1;2;3
+    message(${${arg2}}) #0123
+    if(${arg3} LESS 5)
+        message("arg3 is less than 5")
+    elseif(${arg3} EQUAL 5)
+    message("arg3 is equal 5")
+    else()
+        message("arg3 is bigger than 5")
+    endif()
+endfunction()
+simple("simple" list 5)
+```
+
+## Store to cache
+```cmake
+# way 1
+option(varcache1 "bool cache var" OFF)
+# way 2
+set(varcache2 TRUE CACHE BOOL "int cache var")
+```
+
+## target_compile_definitions
+Specifies compile definitions to use when compiling a given <target>. The named <target> must have been created by a command such as ```add_executable()``` or ```add_library()``` and must not be an ALIAS target.
+
+It is like ```configure_file``` but withput creating a .h file, just path the output program file and the sympol will be added to the code.
+```cmake
+target_compile_definitions(foo PUBLIC FOO=1)
+```
+```cpp
+/* cpp file */
+/* Note that FOO has no defination in .cpp file, only in CMake file */
+std::cout << FOO << std::endl;
+```
+
+## Set compiler options
+```cmake
+target_compile_options(app PUBLIC -march=native)
+```
+
+## File manipulation(read)
+```cmake
+# Get the content of the main.cpp file with its order
+file(READ main.cpp out1)
+message((${out}))
+
+# Get the content of the main.cpp file in a string
+file(STRINGS main.cpp out2)
+message((${out2}))
+
+# Output: (int main(int argc, char const *argv[]))
+file(STRINGS main.cpp out3 REGEX "^int.")
+message((${out3}))
+
+# Get all the source files
+# Not need to add paths in target_include_directories
+file(GLOB_RECURSE  SRCS "*.cpp")
+message((${SRCS}))
+```

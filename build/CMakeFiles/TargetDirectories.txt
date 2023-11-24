@@ -1,0 +1,6 @@
+/home/shady/CMake/build/CMakeFiles/app.dir
+/home/shady/CMake/build/CMakeFiles/edit_cache.dir
+/home/shady/CMake/build/CMakeFiles/rebuild_cache.dir
+/home/shady/CMake/build/lib/CMakeFiles/math_lib.dir
+/home/shady/CMake/build/lib/CMakeFiles/edit_cache.dir
+/home/shady/CMake/build/lib/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,6 @@
+#define msgtoCMake "Defaultconfig"
+#define msgfromCMake "${PRODUCT_YEAR}"
+// #define APP_VERSION_MAJOR @APP_VERSION_MAJOR@
+// #define APP_VERSION_MINOR @APP_VERSION_MINOR@
+#define APP_VERSION_MAJOR ${APP_VERSION_MAJOR}
+#define APP_VERSION_MINOR ${APP_VERSION_MINOR}

@@ -1,6 +1,10 @@
 # CMake
 #### CMake is a tool that is used to generate a Makefile.
 
+In this example we will make a cmake file to compiler and burn code for atmega avr MCU.
+
+In this README.md file I will write some notes about cmake in general.
+
 ## First lines with CMake
 ```CMake
 cmake_minimum_required(VERSION 3.22)
@@ -224,3 +228,14 @@ endmacro()
 fun(${var}) # like this not fun(var)
 func(${var})
 ```
+
+## Execute CLI command
+```cmake
+execute_process(COMMAND "ls")
+```
+
+## To install usbaps in ubuntu
+1. Go to [link](https://www.fischl.de/usbasp/) and download .gz
+2. Extract the file.
+3. Inside the extracted folder go to ``usbasp.2011-05-28/bin/linux-nonroot``
+4. Run command ```./install_rule + sudo cp 99-USBasp.rules /etc/udev/rules.d/99-USBasp.rules```

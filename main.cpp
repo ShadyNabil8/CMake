@@ -1,14 +1,34 @@
-#include <iostream>
-#include "led.h"
-#include "mymath.h"
-#include "defaultconfig.h"
-int main(int argc, char const *argv[])
+#define F_CPU 1000000UL
+#include <avr/io.h>
+#include <util/delay.h>
+class LED
 {
-    GetMathLib();
-    std::cout << "HelloWorldCMake" << std::endl;
-    std::cout << "PRODUVT_YEAR: " << msgfromCMake << std::endl;
-    std::cout << "APP_VERSION_MAJOR: " << APP_VERSION_MAJOR << std::endl;
-    std::cout << "APP_VERSION_MINOR: " << APP_VERSION_MINOR << std::endl;
-    //std::cout << FOO << std::endl;
-    return 0;
+public:
+        LED();
+        ~LED();
+        void LED_toggle();
+};
+LED::LED()
+{
+        DDRA = 0xff;
+        PORTA = 0x00;
+}
+LED::~LED()
+{
+        
+}
+void LED::LED_toggle()
+{
+        _delay_ms(500);
+        PORTA = ~PORTA;
+}
+int main(void)
+{
+        LED ledblink;
+
+        while (1)
+        {
+                ledblink.LED_toggle();
+        }
+        return 0;
 }
